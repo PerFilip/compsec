@@ -28,6 +28,7 @@ public class client {
         try { /* get input parameters */
             host = args[0];
             port = Integer.parseInt(args[1]);
+	    char[] pw_in = args[2].toCharArray(); //Takes password as third input parameter
         } catch (IllegalArgumentException e) {
             System.out.println("USAGE: java client host port");
             System.exit(-1);
@@ -36,7 +37,7 @@ public class client {
         try { /* set up a key manager for client authentication */
             SSLSocketFactory factory = null;
             try {
-                char[] password = "password".toCharArray();
+                char[] password = pw_in;
                 KeyStore ks = KeyStore.getInstance("JKS");
                 KeyStore ts = KeyStore.getInstance("JKS");
                 KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
